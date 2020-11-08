@@ -1,6 +1,8 @@
 import React from 'react'
 import './App.css'
 import axios from 'axios'
+// import Table from './components/Table'
+// import SearchTable from './components/SearchTable'
 
 class App extends React.Component {
   constructor () {
@@ -44,9 +46,11 @@ class App extends React.Component {
   render () {
     const text = this.state.loading ? 'loading...' : this.state.character // works
     return (
-      <div className='App'>
-        <h1>Star Wars API Project</h1>
-        <p>{text}</p>
+      <div className='App galaxy-bg'>
+        <div className='vader'>
+          <h1>Star Wars API Project</h1>
+          <p>{text}</p>
+        </div>
       </div>
     )
   }

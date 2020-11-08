@@ -3,3 +3,30 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.App {
+  height: 100vh;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galaxy-bg {
+  background: url('./images/galaxy.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.vader {
+  background: url('./images/darth-vader.png') no-repeat center center fixed;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
