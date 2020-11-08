@@ -6,15 +6,18 @@ import Table from './components/Table'
 import Header from './components/Header'
 
 class App extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      loading: false,
-      character: [] // doesn't work if empty object vs array
-    }
+  // constructor () {
+  //   super()
+  //   this.state = {
+  //     loading: false,
+  //     character: [] // doesn't work if empty object vs array
+  //   }
+  // }
+  state = {
+    loading: false,
+    character: []
   }
 
-  // one version:
   async componentDidMount () {
     this.setState({ loading: true })
     // works, but figure how to grab ALL data and place in object
@@ -42,10 +45,13 @@ class App extends React.Component {
     })
     // console.log(this.state.character) // luke skywalker
     // console.log(response.data.name) // Luke Skywalker
+    // console.log(this.state.character)
   }
 
   render () {
-    const text = this.state.loading ? 'loading...' : this.state.character // works
+    const text = this.state.loading ? 'loading...' : this.state.character
+    console.log(this.state.character)
+
     return (
       <div>
         <Header />
@@ -59,5 +65,3 @@ class App extends React.Component {
 }
 
 export default App
-
-// <p className='test-api'>{text}</p>

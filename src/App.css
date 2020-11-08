@@ -2,10 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 header {
   text-align: center;
+  background: #000000;
+  color: #ffe81f;
 }
 
 /* .logo {
@@ -58,4 +61,8 @@ header {
 
 .response-data {
   color: white;
+}
+
+i {
+  margin-right: 10px;
 }
