@@ -1,8 +1,9 @@
 import React from 'react'
 import './App.css'
 import axios from 'axios'
-// import Table from './components/Table'
+import Table from './components/Table'
 // import SearchTable from './components/SearchTable'
+import Header from './components/Header'
 
 class App extends React.Component {
   constructor () {
@@ -46,10 +47,11 @@ class App extends React.Component {
   render () {
     const text = this.state.loading ? 'loading...' : this.state.character // works
     return (
-      <div className='App galaxy-bg'>
-        <div className='vader'>
-          <h1>Star Wars API Project</h1>
-          <p>{text}</p>
+      <div>
+        <Header />
+        <div className='App galaxy-bg'>
+          <Table text={text} />
+          <div className='vader' />
         </div>
       </div>
     )
@@ -57,3 +59,5 @@ class App extends React.Component {
 }
 
 export default App
+
+// <p className='test-api'>{text}</p>

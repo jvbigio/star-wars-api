@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+header {
+  text-align: center;
+}
+
+/* .logo {
+  background-image: url('./images/star-wars-logo.png');
+  height: 50px;
+} */
+
+/* .navbar {
+
+} */
+
 .App {
   height: 100vh;
   color: whitesmoke;
@@ -13,7 +26,13 @@
 }
 
 .galaxy-bg {
-  background: url('./images/galaxy.png') no-repeat center center fixed;
+  /* background: url('./images/galaxy.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 1; */
+  background: url('https://i.postimg.cc/X79fbz3M/vader-img.png')no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,7 +40,7 @@
 }
 
 .vader {
-  background: url('./images/darth-vader.png') no-repeat center center fixed;
+  /* background: url('./images/darth-vader.png') no-repeat center center fixed;
   height: 100vh;
   width: 100vw;
   background-position: center;
@@ -29,4 +48,14 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  opacity: 0.4; */
+}
+
+/* p {
+  text-align: center;
+  z-index: 2;
+} */
+
+.response-data {
+  color: white;
 }

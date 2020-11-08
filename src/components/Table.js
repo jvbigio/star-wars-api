@@ -1,10 +1,10 @@
 // for starWars table data
 import React from 'react'
 
-function Table () {
+function Table (props) {
   return (
-    <div>
-      {/* Code here */}
+    <div className='response-data'>
+      <h2>{props.text}</h2>
     </div>
   )
 }
