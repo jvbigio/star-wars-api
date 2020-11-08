@@ -9,7 +9,7 @@ class App extends React.Component {
       loading: false,
       character: {}
     }
-  }
+  }git
 
   // one version:
   async componentDidMount () {
