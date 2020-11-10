@@ -1,38 +1,39 @@
-import React from 'react'
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react'
 import './App.css'
-// import axios from 'axios'
+import axios from 'axios'
+import Table from './components/Table'
+import SearchTable from './components/SearchTable'
+import Header from './components/Header'
 
-class App extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      loading: false,
-      character: {}
+const App = () => {
+  const [loading, setLoading] = useState(false)
+  const [character, setCharacter] = useState([])
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      setLoading(true)
+      const response = await axios.get('https://swapi.dev/api/people/1')
+
+      setCharacter(response.data)
+      setLoading(false)
     }
-  }
 
-  // one version:
-  componentDidMount () {
-    this.setState({ loading: true })
-    fetch('https://swapi.dev/api/people/1')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          loading: false,
-          character: data
-        })
-      })
-  }
+    fetchItems()
+  }, []) // empty array for when component mounts for first time only and wont run again
 
-  render () {
-    const text = this.state.loading ? 'loading...' : this.state.character.name
-    return (
-      <div className='App'>
-        <h1>Star Wars API Project</h1>
-        <p>{text}</p>
+  const text = loading ? 'loading...' : character.name
+
+  return (
+    <div>
+      <Header />
+      <div className='App galaxy-bg'>
+        <Table text={text} />
+        <div className='vader' />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
