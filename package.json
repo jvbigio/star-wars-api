@@ -13,6 +13,29 @@
     "standard": "^16.0.1",
     "web-vitals": "^0.2.4"
   },
+  "eslintConfig": {
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-unused-vars": "warn",
+      "no-console": [
+        "warn",
+        {
+          "allow": [
+            "clear",
+            "info",
+            "error",
+            "dir",
+            "trace",
+            "log"
+          ]
+        }
+      ]
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -32,6 +55,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.13.0"
+    "eslint": "^7.13.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }

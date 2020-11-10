@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
@@ -10,26 +9,33 @@ import Header from './components/Header'
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
-    const fetchItems = async () => {
-      setLoading(true)
-      const response = await axios.get('https://swapi.dev/api/people/1')
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        const response = await axios.get('https://swapi.dev/api/people/1')
+        // const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
-      setCharacter(response.data)
-      setLoading(false)
+        // console.log(`People: ${Object.entries(response.data.results).length}`) // 10
+        // setCharacter(response.data.results) // throwing error
+        setLoading(false)
+      } catch (err) {
+        console.error(err)
+      }
     }
+    fetchData()
+    // empty array for when component mounts for first time only and wont run again
+  }, [page])
 
-    fetchItems()
-  }, []) // empty array for when component mounts for first time only and wont run again
-
-  const text = loading ? 'loading...' : character.name
-
+  const renderCharacter = loading ? 'loading...' : character
+  console.log(character)
   return (
     <div>
       <Header />
       <div className='App galaxy-bg'>
-        <Table text={text} />
+        <Table name={renderCharacter} />
         <div className='vader' />
       </div>
     </div>
