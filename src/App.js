@@ -1,67 +1,39 @@
-import React from 'react'
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import Table from './components/Table'
-// import SearchTable from './components/SearchTable'
+import SearchTable from './components/SearchTable'
 import Header from './components/Header'
 
-class App extends React.Component {
-  // constructor () {
-  //   super()
-  //   this.state = {
-  //     loading: false,
-  //     character: [] // doesn't work if empty object vs array
-  //   }
-  // }
-  state = {
-    loading: false,
-    character: []
-  }
+const App = () => {
+  const [loading, setLoading] = useState(false)
+  const [character, setCharacter] = useState([])
 
-  async componentDidMount () {
-    this.setState({ loading: true })
-    // works, but figure how to grab ALL data and place in object
-    const response = await axios.get('https://swapi.dev/api/people/1')
-    // const response = await axios.get('https://swapi.dev/api/')
-    /*
-    Destructuring example:
-    const name     = hero.name;
-    const realName = hero.realName;
-    Is equivalent to:
-    const { name, realName } = hero;
+  useEffect(() => {
+    const fetchItems = async () => {
+      setLoading(true)
+      const response = await axios.get('https://swapi.dev/api/people/1')
 
-     const {name, value} = event.target <-- equivalent to:
-     const name = event.target.name
-     const value = event.target.value
-    */
+      setCharacter(response.data)
+      setLoading(false)
+    }
 
-    // const data = response.data.data <-- equivalent to:
-    // const { data } = response.data // keep
-    // const name = response.data.name:
-    const { name } = response.data
-    this.setState({
-      loading: false,
-      character: name
-    })
-    // console.log(this.state.character) // luke skywalker
-    // console.log(response.data.name) // Luke Skywalker
-    // console.log(this.state.character)
-  }
+    fetchItems()
+  }, []) // empty array for when component mounts for first time only and wont run again
 
-  render () {
-    const text = this.state.loading ? 'loading...' : this.state.character
-    console.log(this.state.character)
+  const text = loading ? 'loading...' : character.name
 
-    return (
-      <div>
-        <Header />
-        <div className='App galaxy-bg'>
-          <Table text={text} />
-          <div className='vader' />
-        </div>
+  return (
+    <div>
+      <Header />
+      <div className='App galaxy-bg'>
+        <Table text={text} />
+        <div className='vader' />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
