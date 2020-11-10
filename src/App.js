@@ -11,10 +11,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
 
-  // async/await using useEffect
   useEffect(() => {
-    // setLoading(true)
-
     const fetchItems = async () => {
       setLoading(true)
       const response = await axios.get('https://swapi.dev/api/people/1')
