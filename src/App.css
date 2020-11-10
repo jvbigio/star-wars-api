@@ -34,3 +34,13 @@ header {
 i {
   margin-right: 10px;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid whitesmoke;
+  padding: 0.5rem;
+  text-align: left;
+}
