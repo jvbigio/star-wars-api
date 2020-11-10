@@ -12,7 +12,6 @@ const Table = (props) => {
   */
   return (
     <table className='response-data'>
-      {/* <h2>{props.person}</h2> */}
       <thead>
         <tr>
           <th>Name</th>

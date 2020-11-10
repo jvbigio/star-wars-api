@@ -15,8 +15,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const response = await axios.get('https://swapi.dev/api/people/1')
-        // const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
+        const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
         // console.log(`People: ${Object.entries(response.data.results).length}`) // 10
         // setCharacter(response.data.results) // throwing error
