@@ -1,67 +1,65 @@
-import React from 'react'
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import Table from './components/Table'
-// import SearchTable from './components/SearchTable'
+import SearchTable from './components/SearchTable'
 import Header from './components/Header'
 
-class App extends React.Component {
-  // constructor () {
-  //   super()
-  //   this.state = {
+const App = () => {
+  const [loading, setLoading] = useState(false)
+  const [character, setCharacter] = useState([])
+
+  // async/await using useEffect
+  useEffect(() => {
+    const fetchItems = async () => {
+      setLoading(true)
+      const response = await axios.get('https://swapi.dev/api/people/1')
+
+      setCharacter(response.data)
+      // setLoading(false)
+    }
+    // console.log(loading)
+
+    fetchItems()
+  })
+
+  // async componentDidMount () {
+  //   this.setState({ loading: true })
+  //   // works, but figure how to grab ALL data and place in object
+  //   const response = await axios.get('https://swapi.dev/api/people/1')
+  //   // const response = await axios.get('https://swapi.dev/api/')
+
+  //   // const data = response.data.data <-- equivalent to:
+  //   // const { data } = response.data // keep
+  //   // const name = response.data.name:
+  //   const { name } = response.data
+  //   this.setState({
   //     loading: false,
-  //     character: [] // doesn't work if empty object vs array
-  //   }
+  //     character: name
+  //   })
+  //   // console.log(this.state.character) // luke skywalker
+  //   // console.log(response.data.name) // Luke Skywalker
+  //   // console.log(this.state.character)
   // }
-  state = {
-    loading: false,
-    character: []
-  }
 
-  async componentDidMount () {
-    this.setState({ loading: true })
-    // works, but figure how to grab ALL data and place in object
-    const response = await axios.get('https://swapi.dev/api/people/1')
-    // const response = await axios.get('https://swapi.dev/api/')
-    /*
-    Destructuring example:
-    const name     = hero.name;
-    const realName = hero.realName;
-    Is equivalent to:
-    const { name, realName } = hero;
+  // const text = this.state.loading ? 'loading...' : this.state.character
+  // const text = loading ? 'loading...' : character
+  const text = loading ? 'loading...' : character
+  // console.log(character)
+  // console.log(loading)
+  // console.log(text)
 
-     const {name, value} = event.target <-- equivalent to:
-     const name = event.target.name
-     const value = event.target.value
-    */
-
-    // const data = response.data.data <-- equivalent to:
-    // const { data } = response.data // keep
-    // const name = response.data.name:
-    const { name } = response.data
-    this.setState({
-      loading: false,
-      character: name
-    })
-    // console.log(this.state.character) // luke skywalker
-    // console.log(response.data.name) // Luke Skywalker
-    // console.log(this.state.character)
-  }
-
-  render () {
-    const text = this.state.loading ? 'loading...' : this.state.character
-    console.log(this.state.character)
-
-    return (
-      <div>
-        <Header />
-        <div className='App galaxy-bg'>
-          <Table text={text} />
-          <div className='vader' />
-        </div>
+  return (
+    <div>
+      <Header />
+      <div className='App galaxy-bg'>
+        <Table text={text} />
+        <div className='vader' />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
