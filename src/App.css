@@ -28,19 +28,25 @@ header {
 }
 
 .response-data {
-  color: white;
+  /* color: white; */
+  /* width: 768px; */
 }
 
 i {
   margin-right: 10px;
 }
 
-table {
+/* .table {
   border-collapse: collapse;
-}
+}  */
 
-td, th {
+/* td, th {
   border: 1px solid whitesmoke;
   padding: 0.5rem;
   text-align: left;
+}  */
+
+.table {
+  width: 500px;
+  margin: 50px;
 }

@@ -2,14 +2,18 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
-import Table from './components/Table'
-import SearchTable from './components/SearchTable'
+import RenderTable from './components/RenderTable'
+// import SearchTable from './components/SearchTable'
 import Header from './components/Header'
+import RenderCharacters from './components/RenderCharacters'
+// import UsePagination from './components/UsePagination'
+// import Pagination from 'react-bootstrap/Pagination'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(10)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,13 +32,14 @@ const App = () => {
     // empty array for when component mounts for first time only and wont run again
   }, [page])
 
-  const renderCharacter = loading ? 'loading...' : character
-  console.log(character)
+  // const renderCharacter = loading ? 'loading...' : character
   return (
     <div>
       <Header />
       <div className='App galaxy-bg'>
-        <Table name={renderCharacter} />
+        {/* <RenderTable name={renderCharacter} /> */}
+        <RenderTable />
+        <RenderCharacters character={character} loading={loading} />
         <div className='vader' />
       </div>
     </div>
