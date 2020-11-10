@@ -13,43 +13,20 @@ const App = () => {
 
   // async/await using useEffect
   useEffect(() => {
+    // setLoading(true)
+
     const fetchItems = async () => {
       setLoading(true)
       const response = await axios.get('https://swapi.dev/api/people/1')
 
       setCharacter(response.data)
-      // setLoading(false)
+      setLoading(false)
     }
-    // console.log(loading)
 
     fetchItems()
-  })
+  }, []) // empty array for when component mounts for first time only and wont run again
 
-  // async componentDidMount () {
-  //   this.setState({ loading: true })
-  //   // works, but figure how to grab ALL data and place in object
-  //   const response = await axios.get('https://swapi.dev/api/people/1')
-  //   // const response = await axios.get('https://swapi.dev/api/')
-
-  //   // const data = response.data.data <-- equivalent to:
-  //   // const { data } = response.data // keep
-  //   // const name = response.data.name:
-  //   const { name } = response.data
-  //   this.setState({
-  //     loading: false,
-  //     character: name
-  //   })
-  //   // console.log(this.state.character) // luke skywalker
-  //   // console.log(response.data.name) // Luke Skywalker
-  //   // console.log(this.state.character)
-  // }
-
-  // const text = this.state.loading ? 'loading...' : this.state.character
-  // const text = loading ? 'loading...' : character
-  const text = loading ? 'loading...' : character
-  // console.log(character)
-  // console.log(loading)
-  // console.log(text)
+  const text = loading ? 'loading...' : character.name
 
   return (
     <div>
