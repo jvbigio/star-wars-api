@@ -2,4 +2,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+header {
+  text-align: center;
+  background: #000000;
+  color: #ffe81f;
+}
+
+.App {
+  height: 100vh;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galaxy-bg {
+  background: url('https://i.postimg.cc/X79fbz3M/vader-img.png')no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.response-data {
+  color: white;
+}
+
+i {
+  margin-right: 10px;
 }
