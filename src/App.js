@@ -5,7 +5,6 @@ import axios from 'axios'
 import RenderTable from './components/RenderTable'
 // import SearchTable from './components/SearchTable'
 import Header from './components/Header'
-import RenderCharacters from './components/RenderCharacters'
 // import UsePagination from './components/UsePagination'
 // import Pagination from 'react-bootstrap/Pagination'
 
@@ -38,8 +37,7 @@ const App = () => {
       <Header />
       <div className='App galaxy-bg'>
         {/* <RenderTable name={renderCharacter} /> */}
-        <RenderTable />
-        <RenderCharacters character={character} loading={loading} />
+        <RenderTable character={character} loading={loading} />
         <div className='vader' />
       </div>
     </div>
