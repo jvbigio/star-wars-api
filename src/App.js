@@ -21,7 +21,7 @@ const App = () => {
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
         // console.log(`People: ${Object.entries(response.data.results).length}`) // 10
-        // setCharacter(response.data.results) // throwing error
+        setCharacter(response.data.results) // throwing error
         setLoading(false)
       } catch (err) {
         console.error(err)
@@ -36,7 +36,6 @@ const App = () => {
     <div>
       <Header />
       <div className='App galaxy-bg'>
-        {/* <RenderTable name={renderCharacter} /> */}
         <RenderTable character={character} loading={loading} />
         <div className='vader' />
       </div>
