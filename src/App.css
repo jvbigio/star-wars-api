@@ -7,7 +7,7 @@
 
 .App {
   height: 100vh;
-  /* color: whitesmoke; */
+  color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;

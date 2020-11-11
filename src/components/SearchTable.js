@@ -1,14 +1,16 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 
-function SearchTable () {
+function SearchTable ({ loading }) {
+  if (loading) {
+    return <div />
+  }
   return (
-    <div className='search-form'>
-      <div>
-        <input className='form-control' type='text' placeholder='Search...' />
-
-      </div>
-    </div>
+    <Form className='formSearch'>
+      <Form.Group controlId='formSeach'>
+        <Form.Control type='text' placeholder='Search...' />
+      </Form.Group>
+    </Form>
   )
 }
 
