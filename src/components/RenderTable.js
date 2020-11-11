@@ -1,9 +1,3 @@
-/*
-for starWars table data
-
-Each row should contain the characters:
-Name, birth date, height, mass, home-world, species
-*/
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 // import UsePagination from './UsePagination'

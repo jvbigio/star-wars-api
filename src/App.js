@@ -38,8 +38,10 @@ const App = () => {
     <div>
       <Header />
       <div className='App galaxy-bg'>
-        <SearchTable />
-        <RenderTable character={character} loading={loading} />
+        <div className='d-flex justify-content-center flex-sm-column'>
+          <SearchTable />
+          <RenderTable character={character} loading={loading} />
+        </div>
         <div className='vader' />
       </div>
     </div>
