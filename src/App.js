@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import RenderTable from './components/RenderTable'
-// import SearchTable from './components/SearchTable'
+import './RenderTable.css'
+import SearchTable from './components/SearchTable'
+import './SearchTable.css'
 import Header from './components/Header'
+import './Header.css'
 // import UsePagination from './components/UsePagination'
 // import Pagination from 'react-bootstrap/Pagination'
 
@@ -36,6 +39,7 @@ const App = () => {
     <div>
       <Header />
       <div className='App galaxy-bg'>
+        <SearchTable />
         <RenderTable character={character} loading={loading} />
         <div className='vader' />
       </div>

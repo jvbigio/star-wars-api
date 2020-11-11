@@ -8,7 +8,6 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 // import UsePagination from './UsePagination'
 
-
 const RenderTable = ({ character, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>

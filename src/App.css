@@ -5,15 +5,9 @@
   font-family: 'Libre Franklin', sans-serif;
 }
 
-header {
-  text-align: center;
-  background: #000000;
-  color: #ffe81f;
-}
-
 .App {
   height: 100vh;
-  color: whitesmoke;
+  /* color: whitesmoke; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +24,3 @@ header {
 i {
   margin-right: 10px;
 }
-
-/* .table>tbody>tr>td {
-  vertical-align: middle;
-} */
