@@ -1,0 +1,20 @@
+header {
+  text-align: center;
+  background: #000000;
+  color: #ffe81f;
+}
+
+.vader-logo {
+  height: 90px;
+}
+
+.nav {
+  text-align: center;
+  background: #000000;
+  color: #ffe81f;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
