@@ -1,26 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Form from 'react-bootstrap/Form'
 
-function SearchTable ({ loading }) {
-  const [value, setValue] = useState('')
-
+function SearchTable ({ loading, value, handleChange }) {
   if (loading) {
     return <div />
   }
-  const handleChange = e => {
-    e.preventDefault()
-    setValue(e.target.value)
-  }
 
   return (
-    <Form className='formSearch'>
-      <Form.Group controlId='formSeach'>
+    <Form className='form-search'>
+      <Form.Group controlId='form-search'>
         <Form.Control
           type='text'
           placeholder='Search...'
-          value={value}
-          // onChange={handleChange}
-          onChange={(e) => handleChange(e)}
+          onChange={() => handleChange}
         />
       </Form.Group>
     </Form>

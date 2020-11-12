@@ -15,6 +15,7 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [value, setValue] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,7 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
-        setCharacter(response.data.results) // throwing error
+        setCharacter(response.data.results)
         setLoading(false)
       } catch (err) {
         console.error(err)
@@ -32,12 +33,18 @@ const App = () => {
     // empty array for when component mounts for first time only and wont run again
   }, [page])
 
+  const handleChange = e => {
+    e.preventDefault()
+    setValue(e.target.value)
+    console.log(value)
+  }
+
   return (
     <div>
       <Header />
       <div className='App galaxy-bg'>
         <div className='d-flex justify-content-center flex-sm-column'>
-          <SearchTable loading={loading} />
+          <SearchTable loading={loading} value={value} />
           <RenderTable character={character} loading={loading} />
         </div>
         <div className='vader' />
