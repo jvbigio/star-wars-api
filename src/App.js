@@ -23,7 +23,6 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
-        // console.log(response.data.results[0].homeworld)
         setCharacter(response.data.results)
         setLoading(false)
       } catch (err) {
@@ -31,7 +30,6 @@ const App = () => {
       }
     }
     fetchData()
-    // empty array for when component mounts for first time only and wont run again
   }, [page])
 
   const handleChange = e => {
