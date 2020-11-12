@@ -44,7 +44,7 @@ const App = () => {
       <Header />
       <div className='App galaxy-bg'>
         <div className='d-flex justify-content-center flex-sm-column'>
-          <SearchTable loading={loading} value={value} />
+          <SearchTable loading={loading} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
         </div>
         <div className='vader' />
