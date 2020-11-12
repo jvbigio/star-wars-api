@@ -11,4 +11,6 @@
   justify-content: center;
   -webkit-box-shadow: 5px 5px 15px 5px #000000;
   box-shadow: 5px 5px 15px 5px #000000;
+  /* box-shadow: -5px -5px 30px 5px red,
+  5px 5px 30px 5px blue; */
 }
