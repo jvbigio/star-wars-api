@@ -7,6 +7,10 @@ const RenderTable = ({ character, loading }) => {
     return <h2>Loading...</h2>
   }
   const getData = character.map(entity => {
+    // console.log(entity)
+    if (entity.homeworld) {
+      // console.log('got it') // works
+    }
     return (
       <tr key={entity.name}>
         <td>{entity.name}</td>
@@ -18,6 +22,13 @@ const RenderTable = ({ character, loading }) => {
       </tr>
     )
   })
+
+  // const getPlanets = async () => {
+  //   if (await getData('homeworld')) {
+  //     console.log('got it')
+  //   }
+  // }
+  // getPlanets()
 
   return (
     <Table className='table table-dark response-data table-hover' responsive='sm' bordered='true'>

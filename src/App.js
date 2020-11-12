@@ -15,7 +15,7 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
-  const [value, setValue] = useState('')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +23,7 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
+        // console.log(response.data.results[0].homeworld)
         setCharacter(response.data.results)
         setLoading(false)
       } catch (err) {
@@ -35,8 +36,7 @@ const App = () => {
 
   const handleChange = e => {
     e.preventDefault()
-    setValue(e.target.value)
-    console.log(value)
+    setSearch(e.target.value)
   }
 
   return (
@@ -44,7 +44,7 @@ const App = () => {
       <Header />
       <div className='App galaxy-bg'>
         <div className='d-flex justify-content-center flex-sm-column'>
-          <SearchTable loading={loading} handleChange={handleChange} />
+          <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
         </div>
         <div className='vader' />
