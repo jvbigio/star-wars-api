@@ -8,9 +8,9 @@ const RenderTable = ({ character, loading }) => {
   }
   const getData = character.map(entity => {
     // console.log(entity)
-    if (entity.homeworld) {
-      // console.log('got it') // works
-    }
+    // if (entity.homeworld) {
+    //   // console.log('got it') // works
+    // }
     return (
       <tr key={entity.name}>
         <td>{entity.name}</td>

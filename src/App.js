@@ -16,14 +16,25 @@ const App = () => {
   const [page, setPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [search, setSearch] = useState('')
-
+  const [homeworldName, sethomeworldName] = useState([])
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
+        // const res = await axios.get(`https://swapi.dev/api/planets/?page=${page}`)
+        for (let i = 0; i < character.length; i++) {
+          // console.log(res.data.results)
+          const res = await axios.get(`https://swapi.dev/api/planets/`)
+          console.log(res.data)
+          // sethomeworldName(res.data.results)
+          // console.log(res.data.results)
+          // console.log(homeworldName)
+          // console.log(character[i].homeworld)
+          // sethomeworld(res.character[i].homeworld)
+          // sethomeworld(res.character[i].data)
+        }
 
-        // console.log(response.data.results[0].homeworld)
         setCharacter(response.data.results)
         setLoading(false)
       } catch (err) {
