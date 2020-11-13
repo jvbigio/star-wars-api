@@ -22,21 +22,24 @@ const App = () => {
       try {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
-        // const res = await axios.get(`https://swapi.dev/api/planets/?page=${page}`)
-        for (let i = 0; i < character.length; i++) {
-          // console.log(res.data.results)
-          const res = await axios.get(`https://swapi.dev/api/planets/`)
-          console.log(res.data)
-          // sethomeworldName(res.data.results)
-          // console.log(res.data.results)
-          // console.log(homeworldName)
-          // console.log(character[i].homeworld)
-          // sethomeworld(res.character[i].homeworld)
-          // sethomeworld(res.character[i].data)
-        }
 
         setCharacter(response.data.results)
         setLoading(false)
+      } catch (err) {
+        console.error(err)
+      }
+      try {
+        for (let i = 0; i < character.length; i++) {
+          const res = await axios.get(`https://swapi.dev/api/planets/?page=${page}`)
+          console.log(res.data.results[i].residents)
+          // console.log(character[i].homeworld)
+          // console.log(character.homeworld)
+          if (character[i].homeworld === res.data.results[i].residents) {
+            console.log('found')
+          }
+          // sethomeworldName(res.data.results.residents)
+          // console.log(homeworldName)
+        }
       } catch (err) {
         console.error(err)
       }
@@ -56,7 +59,7 @@ const App = () => {
       <div className='App galaxy-bg'>
         <div className='d-flex justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
-          <RenderTable character={character} loading={loading} />
+          <RenderTable character={character} loading={loading} homeworldName={homeworldName} />
         </div>
         <div className='vader' />
       </div>

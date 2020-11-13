@@ -2,14 +2,13 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 // import UsePagination from './UsePagination'
 
-const RenderTable = ({ character, loading }) => {
+const RenderTable = ({ character, loading, homeworldName }) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
   const getData = character.map(entity => {
-    // console.log(entity)
     // if (entity.homeworld) {
-    //   // console.log('got it') // works
+    //   // console.log(entity.homeworld) // works
     // }
     return (
       <tr key={entity.name}>
@@ -22,13 +21,6 @@ const RenderTable = ({ character, loading }) => {
       </tr>
     )
   })
-
-  // const getPlanets = async () => {
-  //   if (await getData('homeworld')) {
-  //     console.log('got it')
-  //   }
-  // }
-  // getPlanets()
 
   return (
     <Table className='table table-dark response-data table-hover' responsive='sm' bordered='true'>
