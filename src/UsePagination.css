@@ -1,3 +1,14 @@
-.pagination, .text-warning {
+.pagination {
    color: #ffe81f;
+   background: black;
 }
+
+/* span>.page-link {
+    color: #ffe81f;
+    background: black;
+}
+
+a {
+   color: #ffe81f;
+   background: black;
+} */
