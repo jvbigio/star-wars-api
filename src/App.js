@@ -45,6 +45,11 @@ const App = () => {
     setSearch(e.target.value)
   }
 
+  const handlePageClick = e => {
+    e.preventDefault()
+    setCurrentPage(e.target)
+  }
+
   return (
     <div>
       <Header />
@@ -52,7 +57,7 @@ const App = () => {
         <div className='d-flex justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
-          <UsePagination loading={loading} currentPage={currentPage} itemsPerPage={itemsPerPage} />
+          <UsePagination loading={loading} currentPage={currentPage} itemsPerPage={itemsPerPage} handlePageClick={handlePageClick} />
         </div>
         <div className='vader' />
       </div>

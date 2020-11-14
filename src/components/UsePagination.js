@@ -3,7 +3,7 @@ import Pagination from 'react-bootstrap/Pagination'
 // import PageItem from 'react-bootstrap/PageItem'
 
 const UsePagination = (props) => {
-  const { loading } = props
+  const { loading, currentPage, handlePageClick } = props
 
   const active = 1
   const items = []
@@ -19,7 +19,7 @@ const UsePagination = (props) => {
     return <div />
   }
   return (
-    <Pagination className='pagination'>
+    <Pagination className='pagination' onClick={handlePageClick}>
       <Pagination.Prev />
       {items}
       <Pagination.Next />
