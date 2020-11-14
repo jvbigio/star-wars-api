@@ -5,3 +5,11 @@
 td {
   color: #ffe81f;
 }
+
+/* .table {
+  font-size: 25px;
+} */
+
+th {
+  font-weight: 600;
+}
