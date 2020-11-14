@@ -7,14 +7,17 @@ import SearchTable from './components/SearchTable'
 import './SearchTable.css'
 import Header from './components/Header'
 import './Header.css'
-// import UsePagination from './components/UsePagination'
-// import Pagination from 'react-bootstrap/Pagination'
+import UsePagination from './components/UsePagination'
+import './UsePagination.css'
+
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
+  // const [itemsPerPage, setItemsPerPage] = useState(10)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [search, setSearch] = useState('')
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,6 +52,7 @@ const App = () => {
         <div className='d-flex justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
+          <UsePagination loading={loading} page={page} itemsPerPage={itemsPerPage} />
         </div>
         <div className='vader' />
       </div>

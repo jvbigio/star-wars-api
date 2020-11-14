@@ -1,32 +1,36 @@
-// import React from 'react'
-// import Pagination from 'react-bootstrap/Pagination'
-// import UsePagination from './UsePagination'
+import React from 'react'
+import Pagination from 'react-bootstrap/Pagination'
+import PageItem from 'react-bootstrap/PageItem'
+import '../UsePagination.css'
 
-// const active = 2
+const active = 1
 // const items = []
-// for (let number = 1; number <= 9; number++) {
-//   items.push(
-//     <Pagination.Item key={number} active={number === active}>
-//       {number}
-//     </Pagination.Item>
-//   )
-// }
+const itemsPerPage = []
+for (let number = 1; number <= 9; number++) {
+// for (let page = 1; page <= 9; page++) {
+  // items.push(
+  itemsPerPage.push(
+    // <Pagination.Item key={number} active={number === active}>
+    //   {number}
+    <Pagination.Item className='pagination text-warning' key={number} active={number === active}>
+      {number}
+    </Pagination.Item>
+  )
+}
+const UsePagination = (props) => {
+// const UsePagination = ({ loading, itemsPerPage, page, number }) => {
+  const { loading } = props
 
-// const UsePagination = (props) => {
-//   return (
-//     <div>
-//       <Pagination>{items}</Pagination>
-//       <br />
+  if (loading) {
+    return <div />
+  }
+  return (
+    <div>
+      {/* <Pagination>{items}</Pagination> */}
+      <Pagination>{itemsPerPage}</Pagination>
+    </div>
 
-//       <Pagination size='lg'>{items}</Pagination>
-//       <br />
+  )
+}
 
-//       <Pagination size='sm'>{items}</Pagination>
-//     </div>
-
-//   )
-// }
-
-// render(UsePagination)
-
-// export default UsePagination
+export default UsePagination
