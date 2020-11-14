@@ -1,9 +1,16 @@
 /* .pagination {
-   color: black;
-   background: #ffe81f;
+   color: #ffe81f;
+   background: black;
 }
 
 span.page-link {
    color: #ffe81f;
    background: black;
+}
+
+ul, li, a {
+   color: #ffe81f;
+}
+.page-link, button {
+   color: #ffe81f;
 } */
