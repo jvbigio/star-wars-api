@@ -1,17 +1,9 @@
 .table th {
   text-align: center;
+}
+
+td {
   color: #ffe81f;
 }
 
-/* th {
-  color: #ffe81f;
-}
-
-.response-data {
-  color: #ffe81f;
-}
-
-.table {
-  color: #ffe81f;
-} */
-
+/* If css doesn't stay, add .text-warning to Table className and add .text-warning to above (.text-warning, td) and add css color code */
