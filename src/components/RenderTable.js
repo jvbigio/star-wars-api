@@ -2,14 +2,11 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 // import UsePagination from './UsePagination'
 
-const RenderTable = ({ character, loading, homeworldName }) => {
+const RenderTable = ({ character, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
   const getData = character.map(entity => {
-    // if (entity.homeworld) {
-    //   // console.log(entity.homeworld) // works
-    // }
     return (
       <tr key={entity.name}>
         <td>{entity.name}</td>
