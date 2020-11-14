@@ -14,3 +14,28 @@ ul, li, a {
 .page-link, button {
    color: #ffe81f;
 } */
+
+/* .page-list, ul, li a {
+   color: red;
+   background: black;
+} */
+
+/* .pagination {
+   color: #ffe81f;
+   background: black;
+} */
+
+/* .page-item, .pagination {
+   background: black;
+   color: #feda4a;
+}
+.page-link {
+   color: #feda4a;
+   background-color: transparent;
+}
+
+.page-item.active .page-link {
+   color: #007bff;
+   background-color: transparent;
+   border-color: transparent;
+} */

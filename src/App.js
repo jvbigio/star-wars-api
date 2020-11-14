@@ -9,6 +9,7 @@ import Header from './components/Header'
 import './Header.css'
 import UsePagination from './components/UsePagination'
 import './UsePagination.css'
+import './intro.css'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
@@ -46,20 +47,24 @@ const App = () => {
 
   const handlePageClick = e => {
     e.preventDefault()
-    setCurrentPage(e.target)
+    setCurrentPage(e.target.textContent)
+  }
+
+  const handleButtonClick = () => {
+    console.log('clicked')
   }
 
   return (
     <div>
-      <Header />
+      <Header handleButtonClick={handleButtonClick} />
       <div className='App galaxy-bg'>
-        <div className='d-flex justify-content-center flex-sm-column'>
+        <div className='justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
           <UsePagination loading={loading} currentPage={currentPage} itemsPerPage={itemsPerPage} handlePageClick={handlePageClick} />
         </div>
-        <div className='vader' />
       </div>
+      <div className='vader' />
     </div>
   )
 }
