@@ -1,10 +1,10 @@
 import React from 'react'
-
+import Vader from '../images/vader.png'
 function Header () {
   return (
     <div className='nav fixed-top'>
       <div className='logo'>
-        <span><i className='fas fa-jedi' /></span>Star Wars <img className='vader-logo' src='https://i.postimg.cc/B6MRV4jG/vader.png' alt='darth vader' />
+        <span><i className='fas fa-jedi' /></span>Star Wars <img className='vader-logo' src={Vader} alt='darth vader' />
       </div>
     </div>
   )
