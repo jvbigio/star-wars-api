@@ -9,34 +9,37 @@ import Header from './components/Header'
 import './Header.css'
 // import UsePagination from './components/UsePagination'
 // import Pagination from 'react-bootstrap/Pagination'
-
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
-  const [value, setValue] = useState('')
-
+  const [search, setSearch] = useState('')
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
-        setCharacter(response.data.results)
+        for (const character of response.data.results) {
+          setCharacter(response.data.results)
+          const planet = await axios.get(character.homeworld)
+          character.homeworld = planet.data.name
+          const species = await axios.get(character.species)
+
+          !species.data.name ? character.species = 'Human' : character.species = species.data.name
+        }
         setLoading(false)
       } catch (err) {
         console.error(err)
       }
     }
     fetchData()
-    // empty array for when component mounts for first time only and wont run again
   }, [page])
 
   const handleChange = e => {
     e.preventDefault()
-    setValue(e.target.value)
-    console.log(value)
+    setSearch(e.target.value)
   }
 
   return (
@@ -44,7 +47,7 @@ const App = () => {
       <Header />
       <div className='App galaxy-bg'>
         <div className='d-flex justify-content-center flex-sm-column'>
-          <SearchTable loading={loading} value={value} />
+          <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
         </div>
         <div className='vader' />
