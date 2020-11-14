@@ -9,21 +9,26 @@ import Header from './components/Header'
 import './Header.css'
 // import UsePagination from './components/UsePagination'
 // import Pagination from 'react-bootstrap/Pagination'
-
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [page, setPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [search, setSearch] = useState('')
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
 
-        setCharacter(response.data.results)
+        for (const character of response.data.results) {
+          setCharacter(response.data.results)
+          const planet = await axios.get(character.homeworld)
+          character.homeworld = planet.data.name
+          const species = await axios.get(character.species)
+
+          !species.data.name ? character.species = 'Human' : character.species = species.data.name
+        }
         setLoading(false)
       } catch (err) {
         console.error(err)
