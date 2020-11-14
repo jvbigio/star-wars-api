@@ -13,7 +13,7 @@ import './UsePagination.css'
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
-  const [page, setPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
   // const [itemsPerPage, setItemsPerPage] = useState(10)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [search, setSearch] = useState('')
@@ -22,7 +22,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`)
+        const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
 
         for (const character of response.data.results) {
           setCharacter(response.data.results)
@@ -38,7 +38,7 @@ const App = () => {
       }
     }
     fetchData()
-  }, [page])
+  }, [currentPage])
 
   const handleChange = e => {
     e.preventDefault()
@@ -52,7 +52,7 @@ const App = () => {
         <div className='d-flex justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
-          <UsePagination loading={loading} page={page} itemsPerPage={itemsPerPage} />
+          <UsePagination loading={loading} currentPage={currentPage} itemsPerPage={itemsPerPage} />
         </div>
         <div className='vader' />
       </div>
