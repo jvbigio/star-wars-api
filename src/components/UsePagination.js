@@ -11,6 +11,7 @@ for (let number = 1; number <= 9; number++) {
     </Pagination.Item>
   )
 }
+
 const UsePagination = (props) => {
   const { loading } = props
 
@@ -18,10 +19,11 @@ const UsePagination = (props) => {
     return <div />
   }
   return (
-    <div>
-      <Pagination className='pagination'>{itemsPerPage}</Pagination>
-    </div>
-
+    <Pagination className='pagination'>
+      <Pagination.Prev />
+      {itemsPerPage}
+      <Pagination.Next />
+    </Pagination>
   )
 }
 
