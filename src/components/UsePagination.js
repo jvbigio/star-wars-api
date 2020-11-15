@@ -1,6 +1,5 @@
 import React from 'react'
 import Pagination from 'react-bootstrap/Pagination'
-// import PageItem from 'react-bootstrap/PageItem'
 
 const UsePagination = (props) => {
   const { loading, currentPage, handlePageClick } = props
@@ -24,9 +23,7 @@ const UsePagination = (props) => {
   return (
     <div className='page-list pagination'>
       <Pagination onClick={(e) => handlePageClick(e)}>
-        <Pagination.Prev id='previous' />
         {items}
-        <Pagination.Next />
       </Pagination>
     </div>
   )
