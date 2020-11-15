@@ -22,7 +22,7 @@ const UsePagination = (props) => {
   }
   return (
     <div className='page-list pagination-sm'>
-      <Pagination className={(currentPage ? active : '') + 'page-item number'} onClick={handlePageClick}>
+      <Pagination onClick={handlePageClick}>
         <Pagination.Prev />
         {items}
         <Pagination.Next />
