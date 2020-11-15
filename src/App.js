@@ -47,6 +47,10 @@ const App = () => {
   const handlePageClick = (e) => {
     e.preventDefault()
     setCurrentPage(e.target.textContent)
+    if (e.target.id === 'previous') {
+      console.log(true)
+      // setCurrentPage(prevPage => prevPage - 1)
+    }
   }
 
   const handleButtonClick = () => {
