@@ -15,8 +15,6 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-  const [activePage, setActivePage] = useState(1)
-  // const [itemsPerPage, setItemsPerPage] = useState(10)
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -49,7 +47,6 @@ const App = () => {
   const handlePageClick = (e) => {
     e.preventDefault()
     setCurrentPage(e.target.textContent)
-    setActivePage(e.target.textContent)
   }
 
   const handleButtonClick = () => {
@@ -63,7 +60,7 @@ const App = () => {
         <div className='justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
           <RenderTable character={character} loading={loading} />
-          <UsePagination loading={loading} currentPage={currentPage} activePage={activePage} handlePageClick={handlePageClick} />
+          <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>
       <div className='vader' />

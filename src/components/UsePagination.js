@@ -20,7 +20,6 @@ const UsePagination = (props) => {
   if (loading) {
     return <div />
   }
-  // console.log(typeof currentPage) // string
   return (
     <div className='page-list pagination-sm'>
       <Pagination className={(currentPage ? active : '') + 'page-item number'} onClick={handlePageClick}>
