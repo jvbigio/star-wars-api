@@ -2,7 +2,7 @@
 
 A React application that fetches data from Swapi.dev API.
 
-Play [here](https://jvbigio.github.io/snake-game/)
+Play [here] link coming soon!
 
 # Image
 
