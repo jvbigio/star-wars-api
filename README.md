@@ -2,7 +2,7 @@
 
 A React application that fetches data from Swapi.dev API.
 
-Play [here] link coming soon!
+Play [here] link coming soon!clear
 
 # Image
 
