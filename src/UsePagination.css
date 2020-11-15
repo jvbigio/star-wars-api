@@ -20,9 +20,8 @@ ul, li, a {
    background: black;
 } */
 
-/* .pagination {
+/* .pagination>.page-list {
    color: #ffe81f;
-   background: black;
 } */
 
 /* .page-item, .pagination {
@@ -39,3 +38,30 @@ ul, li, a {
    background-color: transparent;
    border-color: transparent;
 } */
+
+/* ul a {
+   color: #ffe81f;
+   background: black;
+} */
+
+#pagination,
+ul,
+a,
+li {
+   color: #ffe81f;
+   background: #000000;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   -webkit-box-shadow: 5px 5px 15px 5px #000000;
+   box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.page-item.active {
+   color: #ffe81f;
+   background: #000000;
+   text-shadow: 0 -1px 4px #FFF,
+   0 -2px 10px #ff0,
+   0 -10px 20px #ff8000,
+   0 -18px 40px #F00;
+}

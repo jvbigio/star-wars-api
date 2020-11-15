@@ -10,9 +10,10 @@ const UsePagination = (props) => {
 
   for (let number = 1; number <= 9; number++) {
     items.push(
-      <Pagination.Item key={number} active={active === number}>
+      <Pagination.Item id='pagination' key={number} active={active === number}>
         {number}
       </Pagination.Item>
+
     )
     active = parseInt(currentPage)
   }
@@ -21,8 +22,8 @@ const UsePagination = (props) => {
     return <div />
   }
   return (
-    <div className='page-list pagination-sm'>
-      <Pagination onClick={handlePageClick}>
+    <div className='page-list pagination'>
+      <Pagination onClick={(e) => handlePageClick(e)}>
         <Pagination.Prev />
         {items}
         <Pagination.Next />
