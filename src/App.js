@@ -9,7 +9,6 @@ import Header from './components/Header'
 import './Header.css'
 import UsePagination from './components/UsePagination'
 import './UsePagination.css'
-import './intro.css'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
