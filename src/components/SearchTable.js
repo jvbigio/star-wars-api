@@ -1,8 +1,9 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import RenderTable from './RenderTable'
+// import { useFilters } from 'react-table'
 
-function SearchTable ({ loading, character, search, handleChange }) {
+function SearchTable ({ loading, character, search, handleSearch }) {
   // above is equivalent to:
   // const loading = props.loading
   // const handleChange = props.handleChange
@@ -10,28 +11,38 @@ function SearchTable ({ loading, character, search, handleChange }) {
   if (loading) {
     return <div />
   }
-  // character.map(data => console.log(data))
-  // console.log(character.data)
-  // for (const data of character) {
-  //   console.log(data)
-  // }
 
-  // const tableData = character.map(data => console.log(data))
-  // character.filter(data => {
-  character.filter(data => {
-    // console.log(data.name)
-    console.log(search)
-    if (search === null) {
-      return data.name
-    } else if (data.name.toLowerCase().includes(search.toLowerCase())) {
-      // console.log('yes')
-      return data.name
+  // TEST 1
+  character.filter(person => {
+    if (!search) {
+      return person
+    } else if (person.name.toLowerCase().includes(search.toLowerCase())) {
+      console.log(person.name)
+      return person.name
     }
-  }).map(data => {
-    return (
-      data.name
-    )
   })
+
+  // TEST 2
+  // const tableData = character.filter(data => {
+  //   // console.log(data)
+  //   if (!search) {
+  //     // console.log(search)
+  //     return data
+  //   } else if (data.name.toLowerCase().includes(search.toLowerCase())) {
+  //     // console.log('yes')
+  //     console.log(data.name.search)
+  //     // debugger
+  //     // return data.name(search)
+  //     console.log(search)
+  //     return search
+  //   } else {
+  //     <td style={{ display: 'none' }} />
+  //   }
+  // // }).map(data => {
+  // //   return (
+  // //     data
+  // //   )
+  // })
 
   return (
     <Form className='form-search'>
@@ -39,8 +50,8 @@ function SearchTable ({ loading, character, search, handleChange }) {
         <Form.Control
           type='text'
           placeholder='Search...'
-          value={search}
-          onChange={(e) => handleChange(e)}
+          value={search || ''}
+          onChange={(e) => handleSearch(e)}
         />
       </Form.Group>
     </Form>

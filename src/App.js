@@ -14,7 +14,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-  const [search, setSearch] = useState(null)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,16 +37,13 @@ const App = () => {
     }
     fetchData()
   }, [currentPage])
-
-  const handleChange = e => {
-    e.preventDefault()
-    setSearch(e.target.value)
-  }
   
-  // const handleSearch = e => {
-  //   let keyword = e.target.value 
-  //   setSearch(keyword)
-  // }
+  const handleSearch = (e, character) => {
+    e.preventDefault()
+    setSearch(e.target.value)    
+    // return character.filter(row => row.name.toLowerCase().indexOf(search) > -1)
+  }
+
 
   const handlePageClick = (e) => {
     e.preventDefault()
@@ -62,8 +59,8 @@ const App = () => {
       <Header handleButtonClick={handleButtonClick} />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
-          <SearchTable character={character} loading={loading} search={search} handleChange={handleChange} />
-          <RenderTable character={character} loading={loading} search={search} />
+          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
+          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>

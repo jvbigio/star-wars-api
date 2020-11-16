@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 // import UsePagination from './UsePagination'
 // import SearchTable from './SearchTable'
 
-const RenderTable = ({ character, loading, search, tableData }) => {
+const RenderTable = ({ character, loading, search, handleSearch }) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
@@ -19,6 +19,7 @@ const RenderTable = ({ character, loading, search, tableData }) => {
       </tr>
     )
   })
+
   return (
     <Table className='table table-dark response-data table-hover' responsive='sm' bordered='true'>
       <thead className='thead-light'>
