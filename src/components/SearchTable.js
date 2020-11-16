@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import RenderTable from './RenderTable'
 // import { useFilters } from 'react-table'
@@ -17,7 +18,6 @@ function SearchTable ({ loading, character, search, handleSearch }) {
     if (!search) {
       return person
     } else if (person.name.toLowerCase().includes(search.toLowerCase())) {
-      console.log(person.name)
       return person.name
     }
   })
