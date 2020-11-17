@@ -14,13 +14,13 @@ function SearchTable ({ loading, character, search, handleSearch }) {
   }
 
   // TEST 1
-  character.filter(person => {
-    if (!search) {
-      return person
-    } else if (person.name.toLowerCase().includes(search.toLowerCase())) {
-      return person.name
-    }
-  })
+  // const tableData = character.filter(person => {
+  //   if (!search) {
+  //     return person
+  //   } else if (person.name.toLowerCase().includes(search.toLowerCase())) {
+  //     return person.name
+  //   }
+  // })
 
   // TEST 2
   // const tableData = character.filter(data => {
@@ -43,6 +43,11 @@ function SearchTable ({ loading, character, search, handleSearch }) {
   // //     data
   // //   )
   // })
+
+  // TEST 3
+  // const filteredData = character
+  //   .filter(str => str.includes(search))
+  //   .map((str, idx) => <td key={str.idx}>{str}</td>)
 
   return (
     <Form className='form-search'>

@@ -22,6 +22,11 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
 
+        // new
+        // const searchTable = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+        // setSearch(searchTable)
+        
+  
         for (const character of response.data.results) {
           setCharacter(response.data.results)
           const planet = await axios.get(character.homeworld)
@@ -37,13 +42,11 @@ const App = () => {
     }
     fetchData()
   }, [currentPage])
-  
+
   const handleSearch = (e, character) => {
     e.preventDefault()
-    setSearch(e.target.value)    
-    // return character.filter(row => row.name.toLowerCase().indexOf(search) > -1)
+    setSearch(e.target.value)
   }
-
 
   const handlePageClick = (e) => {
     e.preventDefault()
