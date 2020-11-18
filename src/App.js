@@ -15,8 +15,8 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
-  // const [searchQuery, setSearchQuery] = useState([]) // test
-
+  const [planet, setPlanets] = useState([]) // test
+  const [species, setSpecies] = useState([]) // test
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,16 +40,27 @@ const App = () => {
   }, [currentPage])
 
   // pass that as a prop to SearchTable.js and call the function when the <form> is submitted (see screenshot 2).
-  const executeSearch = (e) => {
+  const executeSearch = async (e) => {
+    // const { name, value } = e.target
+    e.preventDefault()
     // set page number to 1
-    // make http request to ap/people/?search={search-term-goes-here}
-    // update state with result of the http request
+    setCurrentPage(1) // keep
+    // setCurrentPage(currentPage)
+    // make http request to api/people/?search={search-term-goes-here}
+    try {
+    // const query = await axios.get(`/api/people/?search=${search}`) // keep
+      const query = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+      // update state with result of the http request
+      setCharacter(query.data.results)
+      setCurrentPage(currentPage)// test
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
-    setSearchQuery(e.target.value)
   }
 
   const handlePageClick = (e) => {

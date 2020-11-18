@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 // import SearchTable from './SearchTable'
 import Spinner from 'react-bootstrap/Spinner'
 
-const RenderTable = ({ character, loading, search, handleSearch }) => {
+const RenderTable = ({ character, loading, search }) => {
   if (loading) {
     // return <h2 className='spinner'>Loading...</h2>
     return (
@@ -12,7 +12,8 @@ const RenderTable = ({ character, loading, search, handleSearch }) => {
 
     )
   }
-  const getData = character.map(entity => {
+  const getData = character.map(entity => { // orig
+  // const getData = () => character.map(entity => {
     return (
       <tr key={entity.name}>
         <td>{entity.name}</td>
