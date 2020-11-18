@@ -15,7 +15,7 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
-  const [searchQuery, setSearchQuery] = useState([]) // test
+  // const [searchQuery, setSearchQuery] = useState([]) // test
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +39,7 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
+  // pass that as a prop to SearchTable.js and call the function when the <form> is submitted (see screenshot 2).
   const executeSearch = (e) => {
     // set page number to 1
     // make http request to ap/people/?search={search-term-goes-here}
@@ -67,8 +68,8 @@ const App = () => {
       <Header />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
-          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
-          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} searchQuery={searchQuery} />
+          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} executeSearch={executeSearch} />
+          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>

@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import RenderTable from './RenderTable'
 // import { useFilters } from 'react-table'
 
-function SearchTable ({ loading, character, search, handleSearch }) {
+function SearchTable ({ loading, character, search, handleSearch, executeSearch }) {
   // above is equivalent to:
   // const loading = props.loading
   // const handleChange = props.handleChange
@@ -14,7 +14,7 @@ function SearchTable ({ loading, character, search, handleSearch }) {
   }
 
   return (
-    <Form className='form-search' autoComplete='off'>
+    <Form className='form-search' autoComplete='off' onSubmit={executeSearch}>
       <Form.Group controlId='form-search'>
         <Form.Control
           type='text'
