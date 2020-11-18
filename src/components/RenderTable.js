@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 // import SearchTable from './SearchTable'
 import Spinner from 'react-bootstrap/Spinner'
 
-const RenderTable = ({ character, loading, search, handleSearch }) => {
+const RenderTable = ({ character, loading, search, handleSearch, searchQuery }) => {
   if (loading) {
     // return <h2 className='spinner'>Loading...</h2>
     return (

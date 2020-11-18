@@ -15,6 +15,7 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
+  const [searchQuery, setSearchQuery] = useState([]) // test
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,11 +23,21 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
 
+        const query = await axios.get(`https://swapi.dev/api/people/?search=&page=${currentPage}`)
+        // query.search = query.data.results
+        // console.log(query.search)
+
+        // test
+        for (const filter of query.data.results) {
+          setSearchQuery(query.data.results)
+        }
+        // console.log(query.data.results)
+        // setCharacter(query.data.results)
         // new
-        const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+        // const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
         // console.log(`searchNames.data.results${search}`)
         // console.log(search)
-        console.log(searchNames.data, `${search}`)
+        // console.log(searchNames.data, `${search}`) // keep
         // setCharacter(searchNames.data.results.name)
         // setCharacter(search)
 
@@ -37,6 +48,21 @@ const App = () => {
           const species = await axios.get(character.species)
 
           !species.data.name ? character.species = 'Human' : character.species = species.data.name
+
+          // const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+          // console.log(searchNames.data, `${search}`) // keep
+          // console.log(searchNames.data, `${name}`)
+          // console.log(searchNames.data.results[0].name) // luke
+          // console.log(typeof searchNames.data.results) // array of data
+          // for (const query of searchNames.data.results) {
+          //   // console.log(query.name) // list of names
+          //   // console.log(character.name) // list of names
+          //   if (query === search) {
+          //     // console.log(true)
+          //   }
+          // }// console.log(search) // l
+
+          // debugger
         }
         setLoading(false)
       } catch (err) {
@@ -44,11 +70,12 @@ const App = () => {
       }
     }
     fetchData()
-  }, [currentPage, search])
+  }, [currentPage])
 
   const handleSearch = async (e) => {
     e.preventDefault()
     setSearch(e.target.value)
+    setSearchQuery(e.target.value)
   }
 
   const handlePageClick = (e) => {
@@ -68,7 +95,7 @@ const App = () => {
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
           <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
-          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
+          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} searchQuery={searchQuery} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>
