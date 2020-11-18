@@ -23,10 +23,13 @@ const App = () => {
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
 
         // new
-        // const searchTable = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-        // setSearch(searchTable)
-        
-  
+        const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+        // console.log(`searchNames.data.results${search}`)
+        // console.log(search)
+        console.log(searchNames.data, `${search}`)
+        // setCharacter(searchNames.data.results.name)
+        // setCharacter(search)
+
         for (const character of response.data.results) {
           setCharacter(response.data.results)
           const planet = await axios.get(character.homeworld)
@@ -41,9 +44,9 @@ const App = () => {
       }
     }
     fetchData()
-  }, [currentPage])
+  }, [currentPage, search])
 
-  const handleSearch = (e, character) => {
+  const handleSearch = async (e) => {
     e.preventDefault()
     setSearch(e.target.value)
   }
@@ -53,13 +56,15 @@ const App = () => {
     setCurrentPage(e.target.textContent)
   }
 
-  const handleButtonClick = () => {
-    console.log('clicked')
-  }
+  // for intro theme
+  // const handleButtonClick = () => {
+  //   console.log('clicked')
+  // }
 
   return (
     <div>
-      <Header handleButtonClick={handleButtonClick} />
+      {/* <Header handleButtonClick={handleButtonClick} /> */}
+      <Header />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
           <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
