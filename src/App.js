@@ -23,24 +23,6 @@ const App = () => {
         setLoading(true)
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
 
-        const query = await axios.get(`https://swapi.dev/api/people/?search=&page=${currentPage}`)
-        // query.search = query.data.results
-        // console.log(query.search)
-
-        // test
-        for (const filter of query.data.results) {
-          setSearchQuery(query.data.results)
-        }
-        // console.log(query.data.results)
-        // setCharacter(query.data.results)
-        // new
-        // const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-        // console.log(`searchNames.data.results${search}`)
-        // console.log(search)
-        // console.log(searchNames.data, `${search}`) // keep
-        // setCharacter(searchNames.data.results.name)
-        // setCharacter(search)
-
         for (const character of response.data.results) {
           setCharacter(response.data.results)
           const planet = await axios.get(character.homeworld)
@@ -48,21 +30,6 @@ const App = () => {
           const species = await axios.get(character.species)
 
           !species.data.name ? character.species = 'Human' : character.species = species.data.name
-
-          // const searchNames = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-          // console.log(searchNames.data, `${search}`) // keep
-          // console.log(searchNames.data, `${name}`)
-          // console.log(searchNames.data.results[0].name) // luke
-          // console.log(typeof searchNames.data.results) // array of data
-          // for (const query of searchNames.data.results) {
-          //   // console.log(query.name) // list of names
-          //   // console.log(character.name) // list of names
-          //   if (query === search) {
-          //     // console.log(true)
-          //   }
-          // }// console.log(search) // l
-
-          // debugger
         }
         setLoading(false)
       } catch (err) {
@@ -71,6 +38,12 @@ const App = () => {
     }
     fetchData()
   }, [currentPage])
+
+  const executeSearch = (e) => {
+    // set page number to 1
+    // make http request to ap/people/?search={search-term-goes-here}
+    // update state with result of the http request
+  }
 
   const handleSearch = async (e) => {
     e.preventDefault()
