@@ -53,6 +53,7 @@ const App = () => {
       const characters = await processCharacterData(response.data.results)
       setCharacter(characters)
       setLoading(false)
+      setTimeout(() => window.location.reload(1), 5000)
     } catch (err) {
       console.error(err)
     }

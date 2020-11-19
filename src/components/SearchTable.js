@@ -11,8 +11,7 @@ function SearchTable ({ loading, handleSearch, executeSearch }) {
       <Form.Group controlId='form-search'>
         <Form.Control
           type='text'
-          placeholder='Search...'
-          // value={search || ''}
+          placeholder='Search by character name and press enter'
           onChange={(e) => handleSearch(e)}
         />
       </Form.Group>
