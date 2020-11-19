@@ -16,26 +16,20 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
 
-  const processCharacterData = async (characters) => {
-    for (const character of characters) {
-      const planet = await axios.get(character.homeworld)
-      character.homeworld = planet.data.name
-      const species = await axios.get(character.species)
-
-      !species.data.name ? character.species = 'Human' : character.species = species.data.name
-    }
-    return characters
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
-
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
-        const characters = await processCharacterData(response.data.results)
 
-        setCharacter(characters)
+        for (const character of response.data.results) {
+          setCharacter(response.data.results)
+          const planet = await axios.get(character.homeworld)
+          character.homeworld = planet.data.name
+          const species = await axios.get(character.species)
+
+          !species.data.name ? character.species = 'Human' : character.species = species.data.name
+        }
         setLoading(false)
       } catch (err) {
         console.error(err)
@@ -44,20 +38,7 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
-  const executeSearch = async (e) => { e.preventDefault()
-    setLoading(true)
-    setCurrentPage(1)
-    try {
-      const response = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-      const characters = await processCharacterData(response.data.results)
-      setCharacter(characters)
-      setLoading(false)
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  const handleSearch = (e) => {
+  const handleChange = e => {
     e.preventDefault()
     setSearch(e.target.value)
   }
@@ -67,19 +48,17 @@ const App = () => {
     setCurrentPage(e.target.textContent)
   }
 
-  // for intro theme
-  // const handleButtonClick = () => {
-  //   console.log('clicked')
-  // }
+  const handleButtonClick = () => {
+    console.log('clicked')
+  }
 
   return (
     <div>
-      {/* <Header handleButtonClick={handleButtonClick} /> */}
-      <Header />
+      <Header handleButtonClick={handleButtonClick} />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
-          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} executeSearch={executeSearch} />
-          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
+          <SearchTable loading={loading} search={search} handleChange={handleChange} />
+          <RenderTable character={character} loading={loading} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>
