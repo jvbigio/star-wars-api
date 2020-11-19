@@ -1,10 +1,13 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-// import UsePagination from './UsePagination'
+import Spinner from 'react-bootstrap/Spinner'
 
-const RenderTable = ({ character, loading }) => {
+const RenderTable = ({ character, loading, search }) => {
   if (loading) {
-    return <h2>Loading...</h2>
+    return (
+      <Spinner className='spinner' animation='border' />
+
+    )
   }
   const getData = character.map(entity => {
     return (

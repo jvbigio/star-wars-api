@@ -9,7 +9,6 @@ import Header from './components/Header'
 import './Header.css'
 import UsePagination from './components/UsePagination'
 import './UsePagination.css'
-import './intro.css'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
@@ -17,20 +16,26 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
 
+  const processCharacterData = async (characters) => {
+    for (const character of characters) {
+      const planet = await axios.get(character.homeworld)
+      character.homeworld = planet.data.name
+      const species = await axios.get(character.species)
+
+      !species.data.name ? character.species = 'Human' : character.species = species.data.name
+    }
+    return characters
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
+
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
+        const characters = await processCharacterData(response.data.results)
 
-        for (const character of response.data.results) {
-          setCharacter(response.data.results)
-          const planet = await axios.get(character.homeworld)
-          character.homeworld = planet.data.name
-          const species = await axios.get(character.species)
-
-          !species.data.name ? character.species = 'Human' : character.species = species.data.name
-        }
+        setCharacter(characters)
         setLoading(false)
       } catch (err) {
         console.error(err)
@@ -39,7 +44,21 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
-  const handleChange = e => {
+  const executeSearch = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setCurrentPage(1)
+    try {
+      const response = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+      const characters = await processCharacterData(response.data.results)
+      setCharacter(characters)
+      setLoading(false)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
   }
@@ -47,23 +66,21 @@ const App = () => {
   const handlePageClick = (e) => {
     e.preventDefault()
     setCurrentPage(e.target.textContent)
-    if (e.target.id === 'previous') {
-      console.log(true)
-      // setCurrentPage(prevPage => prevPage - 1)
-    }
   }
 
-  const handleButtonClick = () => {
-    console.log('clicked')
-  }
+  // for intro theme
+  // const handleButtonClick = () => {
+  //   console.log('clicked')
+  // }
 
   return (
     <div>
-      <Header handleButtonClick={handleButtonClick} />
+      {/* <Header handleButtonClick={handleButtonClick} /> */}
+      <Header />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
-          <SearchTable loading={loading} search={search} handleChange={handleChange} />
-          <RenderTable character={character} loading={loading} />
+          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} executeSearch={executeSearch} />
+          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>

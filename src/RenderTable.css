@@ -9,3 +9,7 @@ td {
 th {
   font-weight: 600;
 }
+
+.spinner {
+  color: #ffe81f;
+}
