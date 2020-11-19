@@ -38,7 +38,21 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
-  const handleChange = e => {
+  const executeSearch = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setCurrentPage(1)
+    try {
+      const response = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+      const characters = await processCharacterData(response.data.results)
+      setCharacter(characters)
+      setLoading(false)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
   }
