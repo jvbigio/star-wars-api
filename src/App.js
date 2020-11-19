@@ -44,7 +44,8 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
-  const executeSearch = async (e) => { e.preventDefault()
+  const executeSearch = async (e) => {
+    e.preventDefault()
     setLoading(true)
     setCurrentPage(1)
     try {
