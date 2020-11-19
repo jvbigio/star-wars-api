@@ -16,20 +16,26 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
 
+  const processCharacterData = async (characters) => {
+    for (const character of characters) {
+      const planet = await axios.get(character.homeworld)
+      character.homeworld = planet.data.name
+      const species = await axios.get(character.species)
+
+      !species.data.name ? character.species = 'Human' : character.species = species.data.name
+    }
+    return characters
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
+
         const response = await axios.get(`https://swapi.dev/api/people/?page=${currentPage}`)
+        const characters = await processCharacterData(response.data.results)
 
-        for (const character of response.data.results) {
-          setCharacter(response.data.results)
-          const planet = await axios.get(character.homeworld)
-          character.homeworld = planet.data.name
-          const species = await axios.get(character.species)
-
-          !species.data.name ? character.species = 'Human' : character.species = species.data.name
-        }
+        setCharacter(characters)
         setLoading(false)
       } catch (err) {
         console.error(err)
@@ -40,16 +46,13 @@ const App = () => {
 
   const executeSearch = async (e) => {
     e.preventDefault()
+    setLoading(true)
     setCurrentPage(1)
     try {
-      const res = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-      for (const query of res.data.results) {
-        const homeworld = await axios.get(query.homeworld)
-        query.homeworld = homeworld.data.name
-        const race = await axios.get(query.species)
-        !race.data.name ? query.species = 'Human' : query.species = race.data.name
-      }
-      setCharacter(res.data.results)
+      const response = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+      const characters = await processCharacterData(response.data.results)
+      setCharacter(characters)
+      setLoading(false)
     } catch (err) {
       console.error(err)
     }
