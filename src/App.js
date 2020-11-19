@@ -39,20 +39,18 @@ const App = () => {
     fetchData()
   }, [currentPage])
 
-  // pass that as a prop to SearchTable.js and call the function when the <form> is submitted (see screenshot 2).
   const executeSearch = async (e) => {
-    // const { name, value } = e.target
     e.preventDefault()
-    // set page number to 1
-    setCurrentPage(1) // keep
-    // setCurrentPage(currentPage)
-    // make http request to api/people/?search={search-term-goes-here}
+    setCurrentPage(1)
     try {
-    // const query = await axios.get(`/api/people/?search=${search}`) // keep
-      const query = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
-      // update state with result of the http request
-      setCharacter(query.data.results)
-      setCurrentPage(currentPage)// test
+      const res = await axios.get(`https://swapi.dev/api/people/?search=${search}`)
+      for (const query of res.data.results) {
+        const homeworld = await axios.get(query.homeworld)
+        query.homeworld = homeworld.data.name
+        const race = await axios.get(query.species)
+        !race.data.name ? query.species = 'Human' : query.species = race.data.name
+      }
+      setCharacter(res.data.results)
     } catch (err) {
       console.error(err)
     }
