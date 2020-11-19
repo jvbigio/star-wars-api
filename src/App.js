@@ -15,8 +15,7 @@ const App = () => {
   const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
-  const [planet, setPlanets] = useState([]) // test
-  const [species, setSpecies] = useState([]) // test
+
   useEffect(() => {
     const fetchData = async () => {
       try {

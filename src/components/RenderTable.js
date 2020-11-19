@@ -1,19 +1,15 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-// import UsePagination from './UsePagination'
-// import SearchTable from './SearchTable'
 import Spinner from 'react-bootstrap/Spinner'
 
 const RenderTable = ({ character, loading, search }) => {
   if (loading) {
-    // return <h2 className='spinner'>Loading...</h2>
     return (
       <Spinner className='spinner' animation='border' />
 
     )
   }
-  const getData = character.map(entity => { // orig
-  // const getData = () => character.map(entity => {
+  const getData = character.map(entity => {
     return (
       <tr key={entity.name}>
         <td>{entity.name}</td>

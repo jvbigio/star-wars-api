@@ -1,7 +1,5 @@
 import React from 'react'
-// import { Table } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
-// import RenderTable from './RenderTable'
 
 function SearchTable ({ loading, character, search, handleSearch, executeSearch }) {
   // above is equivalent to:
