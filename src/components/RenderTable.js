@@ -2,7 +2,7 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Spinner from 'react-bootstrap/Spinner'
 
-const RenderTable = ({ character, loading, search }) => {
+const RenderTable = ({ character, loading }) => {
   if (loading) {
     return (
       <Spinner className='spinner' animation='border' />

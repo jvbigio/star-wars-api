@@ -1,11 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 
-function SearchTable ({ loading, character, search, handleSearch, executeSearch }) {
-  // above is equivalent to:
-  // const loading = props.loading
-  // const handleChange = props.handleChange
-  // const { loading, search, handleChange } = props
+function SearchTable ({ loading, handleSearch, executeSearch }) {
   if (loading) {
     return <div />
   }
@@ -16,7 +12,7 @@ function SearchTable ({ loading, character, search, handleSearch, executeSearch 
         <Form.Control
           type='text'
           placeholder='Search...'
-          value={search || ''}
+          // value={search || ''}
           onChange={(e) => handleSearch(e)}
         />
       </Form.Group>

@@ -68,19 +68,13 @@ const App = () => {
     setCurrentPage(e.target.textContent)
   }
 
-  // for intro theme
-  // const handleButtonClick = () => {
-  //   console.log('clicked')
-  // }
-
   return (
     <div>
-      {/* <Header handleButtonClick={handleButtonClick} /> */}
       <Header />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
-          <SearchTable character={character} loading={loading} search={search} handleSearch={handleSearch} executeSearch={executeSearch} />
-          <RenderTable character={character} loading={loading} search={search} handleSearch={handleSearch} />
+          <SearchTable loading={loading} handleSearch={handleSearch} executeSearch={executeSearch} />
+          <RenderTable character={character} loading={loading} />
           <UsePagination loading={loading} currentPage={currentPage} handlePageClick={handlePageClick} />
         </div>
       </div>

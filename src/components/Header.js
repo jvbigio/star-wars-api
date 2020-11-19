@@ -1,7 +1,7 @@
 import React from 'react'
 import Vader from '../images/vader.png'
 
-function Header ({ handleButtonClick }) {
+function Header () {
   return (
     <div className='nav fixed-top'>
       <div className='logo'>
