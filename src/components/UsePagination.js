@@ -26,7 +26,7 @@ const UsePagination = (props) => {
       <Pagination onClick={(e) => handlePageClick(e)}>
         <Pagination.Prev id='previous' />
         {items}
-        <Pagination.Next />
+        <Pagination.Next id='next' />
       </Pagination>
     </div>
   )
