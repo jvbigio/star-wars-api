@@ -45,21 +45,26 @@ const App = () => {
   }
 
   const handlePageClick = (e) => {
-    e.preventDefault()
-    setCurrentPage(e.target.textContent)
-    if (e.target.id === 'previous') {
-      console.log(true)
-      // setCurrentPage(prevPage => prevPage - 1)
-    }
-  }
+    // e.preventDefault()
+    setCurrentPage(parseInt(e.target.textContent))
+    // setCurrentPage(e.target.textContent)
 
-  const handleButtonClick = () => {
-    console.log('clicked')
+    if (e.target.id === 'previous' && currentPage !== 1) {
+      // setCurrentPage(activePage => activePage + 1)
+      // setCurrentPage(parseInt(activePage => activePage + 1))
+      setCurrentPage(currentPage - 1)
+    }
+    if (e.target.id === 'next' && currentPage !== 9) {
+      // setCurrentPage(activePage => activePage + 1)
+      // setCurrentPage(parseInt(activePage => activePage + 1))
+      setCurrentPage(currentPage + 1)
+    }
+    // debugger
   }
 
   return (
     <div>
-      <Header handleButtonClick={handleButtonClick} />
+      <Header />
       <div className='App galaxy-bg'>
         <div className='justify-content-center flex-sm-column'>
           <SearchTable loading={loading} search={search} handleChange={handleChange} />
