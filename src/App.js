@@ -44,21 +44,23 @@ const App = () => {
     setSearch(e.target.value)
   }
 
-  const handlePageClick = (e) => {
+  const handlePageClick = e => {
     // e.preventDefault()
-    setCurrentPage(parseInt(e.target.textContent))
     // setCurrentPage(e.target.textContent)
 
-    if (e.target.id === 'previous' && currentPage !== 1) {
-      // setCurrentPage(activePage => activePage + 1)
-      // setCurrentPage(parseInt(activePage => activePage + 1))
+    // if (e.target.parentElement.id === 'previous' && currentPage !== 1) {
+    if (e.target.parentElement.id === 'previous') {
+      console.log('previous clicked')
+      setCurrentPage(activePage => activePage - 1)
       setCurrentPage(currentPage - 1)
     }
-    if (e.target.id === 'next' && currentPage !== 9) {
-      // setCurrentPage(activePage => activePage + 1)
-      // setCurrentPage(parseInt(activePage => activePage + 1))
-      setCurrentPage(currentPage + 1)
+    // if (e.target.parentElement.id === 'next' && currentPage !== 9) {
+    if (e.target.parentElement.id === 'next') {
+      console.log('next clicked')
+      setCurrentPage(activePage => activePage + 1)
+      // setCurrentPage(currentPage + 1)
     }
+    setCurrentPage(e.target.textContent)
     // debugger
   }
 
