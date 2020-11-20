@@ -44,34 +44,6 @@ const App = () => {
     setSearch(e.target.value)
   }
 
-  // const handlePageClick = e => {
-  //   if (currentPage !== 9) {
-  //     if (e.target.id === 'next' || e.target.parentElement.id === 'next') {
-  //       setCurrentPage(activePage => activePage + 1)
-  //     }
-  //   }
-  //   if (currentPage !== 1) {
-  //     if (e.target.id === 'previous' || e.target.parentElement.id === 'previous') {
-  //       setCurrentPage(activePage => activePage - 1)
-  //     }
-  //   }
-  //   if ((currentPage === 1 && e.target.id === 'previous') || (currentPage === 1 && e.target.parentElement.id === 'previous')) {
-  //     return false
-  //   }
-  //   if ((currentPage === 9 && e.target.id === 'next') || (currentPage === 9 && e.target.parentElement.id === 'next')) {
-  //     return false
-  //   }
-  //   if ((currentPage >= 1 && currentPage < 9) && (e.target.id !== 'next' || e.target.parentElement.id !== 'next' || e.target.id !== 'previous' || e.target.parentElement.id !== 'previous ')) {
-  //     setCurrentPage(e.target.textContent)
-  //   } else {
-  //     return false
-  //   }
-  // }
-
-  // original
-  // const handlePageClick = e => {
-  //   setCurrentPage(e.target.textContent)
-  // }
   const handlePageClick = e => {
     if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
       setCurrentPage(activePage => activePage + 1)
@@ -80,23 +52,7 @@ const App = () => {
     } else {
       setCurrentPage(e.target.textContent)
     }
-    // debugger
   }
-
-  // const handlePageClick = e => {
-  //   parseInt(e.target.textContent)
-  //   if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
-  //     setCurrentPage(activePage => activePage + 1)
-  //   } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
-  //     setCurrentPage(currentPage - 1)
-  //   } else if ((currentPage === '9' && e.target.id === 'next') || (currentPage === '9' && e.target.parentElement.id === 'next')) {
-  //     return false
-  //     // setCurrentPage(e.target.textContent)
-  //   } else {
-  //     setCurrentPage(e.target.textContent)
-  //   }
-  //   // debugger
-  // }
 
   return (
     <div>
