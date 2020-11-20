@@ -4,9 +4,12 @@ A React application that fetches data from Swapi.dev API.
 
 Play [here] link coming soon!clear
 
-# Image
+# Images
 
 ![star-wars-api](https://user-images.githubusercontent.com/43301741/99191594-99186a80-273b-11eb-998f-91cdca9ccf3f.png)
+
+Users can also also look up characters by name:
+![search-character](https://user-images.githubusercontent.com/43301741/99828637-34895100-2b29-11eb-9494-f22c45b346f6.png)
 
 # Summary
 
