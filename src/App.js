@@ -64,9 +64,14 @@ const App = () => {
     setSearch(e.target.value)
   }
 
-  const handlePageClick = (e) => {
-    e.preventDefault()
-    setCurrentPage(e.target.textContent)
+  const handlePageClick = e => {
+    if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
+      setCurrentPage(activePage => activePage + 1)
+    } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
+      setCurrentPage(currentPage - 1)
+    } else {
+      setCurrentPage(e.target.textContent)
+    }
   }
 
   return (
