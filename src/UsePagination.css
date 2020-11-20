@@ -1,5 +1,9 @@
 #pagination,
-ul, li {
+#previous,
+#next,
+ul,
+a,
+li {
    color: #ffe81f;
    background: #000000;
    border: none;
@@ -13,16 +17,7 @@ ul, li {
    color: #ffe81f;
    background: #000000;
    text-shadow: 0 -1px 4px #FFF,
-   0 -2px 10px #ff0,
-   0 -10px 20px #ff8000,
-   0 -18px 40px #F00;
+      0 -2px 10px #ff0,
+      0 -10px 20px #ff8000,
+      0 -18px 40px #F00;
 }
-
-/* .page-list.active {
-   color: #ffe81f;
-   background: #000000;
-   text-shadow: 0 -1px 4px #FFF,
-   0 -2px 10px #ff0,
-   0 -10px 20px #ff8000,
-   0 -18px 40px #F00;
-} */
