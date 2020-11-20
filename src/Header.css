@@ -13,14 +13,3 @@
   -webkit-box-shadow: 5px 5px 15px 5px #000000;
   box-shadow: 5px 5px 15px 5px #000000;
 }
-
-.nerd-button {
-  margin-left: 19px;
-  flex-direction: row;
-  align-self: flex-start;
-  background: black;
-  left: 0;
-  color: #ffe81f;
-  border-radius: 50%;
-  font-size: 16px;
-}

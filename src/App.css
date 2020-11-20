@@ -14,7 +14,7 @@
 }
 
 .galaxy-bg {
-  background: url('https://i.postimg.cc/X79fbz3M/vader-img.png')no-repeat center center fixed;
+  background: url('./images/vader-img.png') center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
