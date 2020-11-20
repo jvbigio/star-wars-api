@@ -23,7 +23,9 @@ const UsePagination = (props) => {
   return (
     <div className='page-list pagination'>
       <Pagination onClick={(e) => handlePageClick(e)}>
+        <Pagination.Prev style={currentPage > 1 ? { display: 'block' } : { display: 'none' }} id='previous' />
         {items}
+        <Pagination.Next style={currentPage < 9 ? { display: 'block' } : { display: 'none' }} id='next' />
       </Pagination>
     </div>
   )
