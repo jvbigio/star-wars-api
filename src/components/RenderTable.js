@@ -6,7 +6,6 @@ const RenderTable = ({ character, loading }) => {
   if (loading) {
     return (
       <Spinner className='spinner' animation='border' />
-
     )
   }
   const getData = character.map(entity => {

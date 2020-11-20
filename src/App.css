@@ -24,10 +24,3 @@
 i {
   margin-right: 10px;
 }
-
-/* d-flex justify-content-center flex-sm-column' */
-.cont {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
