@@ -2,7 +2,7 @@
 
 A React application that fetches data from Swapi.dev API.
 
-Play [here] link coming soon!clear
+See it [here](https://starwars-api-jb.herokuapp.com/)
 
 # Images
 
