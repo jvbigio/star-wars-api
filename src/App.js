@@ -68,41 +68,35 @@ const App = () => {
   //   }
   // }
 
-  // keep
+  // original
   // const handlePageClick = e => {
-  // //   // works except doesnt stop page before 1 or after 9:
-  //   if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
-  //     setCurrentPage(activePage => activePage + 1)
-  //   } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
-  //     setCurrentPage(currentPage - 1)
-  //   } else {
-  //     setCurrentPage(e.target.textContent)
-  //   }
-  //   // debugger
+  //   setCurrentPage(e.target.textContent)
   // }
   const handlePageClick = e => {
-    parseInt(e.target.textContent)
     if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
       setCurrentPage(activePage => activePage + 1)
     } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
       setCurrentPage(currentPage - 1)
-    } else if ((currentPage === '9' && e.target.id === 'next') || (currentPage === '9' && e.target.parentElement.id === 'next')) {
-      return false
-      // setCurrentPage(e.target.textContent)
     } else {
       setCurrentPage(e.target.textContent)
     }
     // debugger
   }
 
-  // const pageUp = e => {
-  //   if (e.target.parentElement.id) {
+  // const handlePageClick = e => {
+  //   parseInt(e.target.textContent)
+  //   if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
   //     setCurrentPage(activePage => activePage + 1)
+  //   } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
+  //     setCurrentPage(currentPage - 1)
+  //   } else if ((currentPage === '9' && e.target.id === 'next') || (currentPage === '9' && e.target.parentElement.id === 'next')) {
+  //     return false
+  //     // setCurrentPage(e.target.textContent)
+  //   } else {
+  //     setCurrentPage(e.target.textContent)
   //   }
+  //   // debugger
   // }
-  // const pageDown = _ => setCurrentPage(activePage => activePage - 1)
-  // const pageUp = _ => setCurrentPage(activePage => activePage + 1)
-  // const pageDown = _ => setCurrentPage(activePage => activePage - 1)
 
   return (
     <div>
