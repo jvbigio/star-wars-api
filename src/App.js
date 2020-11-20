@@ -16,17 +16,6 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [search, setSearch] = useState('')
 
-  const processCharacterData = async (characters) => {
-    for (const character of characters) {
-      const planet = await axios.get(character.homeworld)
-      character.homeworld = planet.data.name
-      const species = await axios.get(character.species)
-
-      !species.data.name ? character.species = 'Human' : character.species = species.data.name
-    }
-    return characters
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,6 +32,17 @@ const App = () => {
     }
     fetchData()
   }, [currentPage])
+
+  const processCharacterData = async (characters) => {
+    for (const character of characters) {
+      const planet = await axios.get(character.homeworld)
+      character.homeworld = planet.data.name
+      const species = await axios.get(character.species)
+
+      !species.data.name ? character.species = 'Human' : character.species = species.data.name
+    }
+    return characters
+  }
 
   const executeSearch = async (e) => {
     e.preventDefault()
