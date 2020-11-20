@@ -44,25 +44,65 @@ const App = () => {
     setSearch(e.target.value)
   }
 
-  const handlePageClick = e => {
-    // e.preventDefault()
-    // setCurrentPage(e.target.textContent)
+  // const handlePageClick = e => {
+  //   if (currentPage !== 9) {
+  //     if (e.target.id === 'next' || e.target.parentElement.id === 'next') {
+  //       setCurrentPage(activePage => activePage + 1)
+  //     }
+  //   }
+  //   if (currentPage !== 1) {
+  //     if (e.target.id === 'previous' || e.target.parentElement.id === 'previous') {
+  //       setCurrentPage(activePage => activePage - 1)
+  //     }
+  //   }
+  //   if ((currentPage === 1 && e.target.id === 'previous') || (currentPage === 1 && e.target.parentElement.id === 'previous')) {
+  //     return false
+  //   }
+  //   if ((currentPage === 9 && e.target.id === 'next') || (currentPage === 9 && e.target.parentElement.id === 'next')) {
+  //     return false
+  //   }
+  //   if ((currentPage >= 1 && currentPage < 9) && (e.target.id !== 'next' || e.target.parentElement.id !== 'next' || e.target.id !== 'previous' || e.target.parentElement.id !== 'previous ')) {
+  //     setCurrentPage(e.target.textContent)
+  //   } else {
+  //     return false
+  //   }
+  // }
 
-    // if (e.target.parentElement.id === 'previous' && currentPage !== 1) {
-    if (e.target.parentElement.id === 'previous') {
-      console.log('previous clicked')
-      setCurrentPage(activePage => activePage - 1)
-      setCurrentPage(currentPage - 1)
-    }
-    // if (e.target.parentElement.id === 'next' && currentPage !== 9) {
-    if (e.target.parentElement.id === 'next') {
-      console.log('next clicked')
+  // keep
+  // const handlePageClick = e => {
+  // //   // works except doesnt stop page before 1 or after 9:
+  //   if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
+  //     setCurrentPage(activePage => activePage + 1)
+  //   } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
+  //     setCurrentPage(currentPage - 1)
+  //   } else {
+  //     setCurrentPage(e.target.textContent)
+  //   }
+  //   // debugger
+  // }
+  const handlePageClick = e => {
+    parseInt(e.target.textContent)
+    if ((e.target.id === 'next' && currentPage !== 9) || (e.target.parentElement.id === 'next' && currentPage !== 9)) {
       setCurrentPage(activePage => activePage + 1)
-      // setCurrentPage(currentPage + 1)
+    } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
+      setCurrentPage(currentPage - 1)
+    } else if ((currentPage === '9' && e.target.id === 'next') || (currentPage === '9' && e.target.parentElement.id === 'next')) {
+      return false
+      // setCurrentPage(e.target.textContent)
+    } else {
+      setCurrentPage(e.target.textContent)
     }
-    setCurrentPage(e.target.textContent)
     // debugger
   }
+
+  // const pageUp = e => {
+  //   if (e.target.parentElement.id) {
+  //     setCurrentPage(activePage => activePage + 1)
+  //   }
+  // }
+  // const pageDown = _ => setCurrentPage(activePage => activePage - 1)
+  // const pageUp = _ => setCurrentPage(activePage => activePage + 1)
+  // const pageDown = _ => setCurrentPage(activePage => activePage - 1)
 
   return (
     <div>
