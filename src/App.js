@@ -69,7 +69,7 @@ const App = () => {
     } else if ((e.target.id === 'previous' && currentPage !== 1) || (e.target.parentElement.id === 'previous' && currentPage !== 1)) {
       setCurrentPage(activePage => activePage - 1)
     } else {
-      setCurrentPage(e.target.textContent)
+      setCurrentPage(parseInt(e.target.textContent))
     }
   }
 
