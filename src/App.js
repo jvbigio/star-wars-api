@@ -2,13 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import RenderTable from './components/RenderTable'
-import './RenderTable.css'
 import SearchTable from './components/SearchTable'
-import './SearchTable.css'
 import Header from './components/Header'
-import './Header.css'
 import UsePagination from './components/UsePagination'
-import './UsePagination.css'
 
 const App = () => {
   const [loading, setLoading] = useState(false)

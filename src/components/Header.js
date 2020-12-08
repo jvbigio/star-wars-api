@@ -1,5 +1,6 @@
 import React from 'react'
 import Vader from '../images/vader.png'
+import '../Header.css'
 
 function Header () {
   return (

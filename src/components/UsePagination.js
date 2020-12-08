@@ -1,5 +1,6 @@
 import React from 'react'
 import Pagination from 'react-bootstrap/Pagination'
+import '../UsePagination.css'
 
 const UsePagination = (props) => {
   const { loading, currentPage, handlePageClick } = props
