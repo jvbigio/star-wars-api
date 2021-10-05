@@ -31,13 +31,12 @@ const App = () => {
 
   const processCharacterData = async (characters) => {
     for (const character of characters) {
-      const planetURL = character.homeworld.replace('http', 'https')
-      const planet = await axios.get(planetURL)
+      const planet = await axios.get(character.homeworld)
 
       character.homeworld = planet.data.name
 
-      const speciesURL = character.species.toString().replace('http', 'https')
-      const species = await axios.get(speciesURL)
+      const species = await axios.get(character.species)
+
       !species.data.name ? character.species = 'Human' : character.species = species.data.name
     }
     return characters
